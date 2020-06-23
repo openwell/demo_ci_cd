@@ -1,4 +1,4 @@
-package com.demo_ci_cd;
+package com.openwell.demo_ci_cd;
 
 import com.facebook.react.ReactActivity;
 

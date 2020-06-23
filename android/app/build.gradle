@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.demo_ci_cd"
+        applicationId "com.openwell.demo_ci_cd"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
