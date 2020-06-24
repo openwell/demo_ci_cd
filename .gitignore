@@ -2,6 +2,8 @@
 #
 .DS_Store
 
+./andriod/api-key-playstore.json
+./andriod/app/demo_ci_cd.keystore
 # Xcode
 #
 build/
