@@ -99,74 +99,8 @@ jobs:
           command: |
             bundle exec fastlane beta
 
-  # ios:
-  #   macos:
-  #     xcode: "9.0"
-  #   working_directory: ~/demo-react-native
-
-  #   # use a --login shell so our "set Ruby version" command gets picked up for later steps
-  #   shell: /bin/bash --login -o pipefail
-
-  #   steps:
-  #     - checkout
-
-  #     - run:
-  #         name: set Ruby version
-  #         command:  echo "ruby-2.4" > ~/.ruby-version
-
-  #     - restore_cache:
-  #         key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
-
-  #     - restore_cache:
-  #         key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-
-  #     # not using a workspace here as Node and npm versions
-  #     # differ between our macOS executor image and the Docker containers above
-  #     - run: npm install
-
-  #     - save_cache:
-  #         key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
-  #         paths:
-  #           - ~/.cache/npm
-
-  #     - save_cache:
-  #         key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-  #         paths:
-  #           - node_modules
-
-  #     - restore_cache:
-  #         key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-
-  #     - run:
-  #         command: bundle install
-  #         working_directory: ios
-
-  #     - save_cache:
-  #         key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-  #         paths:
-  #           - vendor/bundle
-
-  #     - run:
-  #         command: bundle exec fastlane test
-  #         working_directory: ios
-
-  #     - run:
-  #         name: set up test results
-  #         working_directory: ios
-  #         when: always
-  #         command: |
-  #           mkdir -p test-results/fastlane test-results/xcode
-  #           mv fastlane/report.xml test-results/fastlane
-  #           mv fastlane/test_output/report.junit test-results/xcode/junit.xml
-  #     - store_test_results:
-  #         path: ios/test-results
-
-  #     - store_artifacts:
-  #         path: ios/test-results
-
 workflows:
   version: 2
-  # node-android-ios:
     node-android:
       jobs:
         - android-hold:
@@ -198,6 +132,3 @@ workflows:
                 only: /^v.*/
               branches:
                 ignore: /.*/
-        # - ios:
-        #     requires:
-        #       - node
