@@ -60,15 +60,15 @@ jobs:
 
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 --decode -i > $apiKeyPlayStore
+          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode -i > $releaseKeyStore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
             
       - run:
           name: Create keystore.properties
-          command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%d\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
+          command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%s\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
   
       - run: gem update --system
 
@@ -103,15 +103,15 @@ jobs:
       
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 --decode -i > $apiKeyPlayStore
+          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode -i > $releaseKeyStore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
           
       - run:
           name: Create keystore.properties
-          command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%d\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
+          command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%s\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
   
       - run: gem update --system
 
