@@ -64,7 +64,7 @@ jobs:
 
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > api_key_playstore.json
+          command: echo $API_KEY_PLAYSTORE | base64 -d > $api_key_playstore
 
       - run:
           name: Create release.keystore
@@ -111,7 +111,7 @@ jobs:
 
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > api_key_playstore.json
+          command: echo $API_KEY_PLAYSTORE | base64 -d > $api_key_playstore
 
       - run:
           name: Create release.keystore
