@@ -2,9 +2,9 @@
 #
 .DS_Store
 
-android/api-key-playstore.json
-android/api.json
-android/app/demo_ci_cd.keystore
+android/api_key_playstore.json
+android/app/release.keystore
+android/gradle.properties
 # Xcode
 #
 build/
