@@ -13,8 +13,8 @@ jobs:
           name: Create release.keystore
           command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
       - run:
-        name: Create keystore.properties
-        command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%d\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
+          name: Create keystore.properties
+          command: printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=%d\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s' $android_useAndroidX $android_enableJetifier $FLIPPER_VERSION $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
   
       - restore_cache:
           key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
@@ -97,6 +97,8 @@ jobs:
 
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+
+      - run: gem update --system
 
       - run: bundle install
 
