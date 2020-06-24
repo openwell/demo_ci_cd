@@ -60,11 +60,11 @@ jobs:
 
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > $apiKeyPlayStore
+          command: echo $API_KEY_PLAYSTORE | base64 --decode -i > $apiKeyPlayStore
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode -i > $releaseKeyStore
             
       - run:
           name: Create keystore.properties
@@ -103,11 +103,11 @@ jobs:
       
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > $apiKeyPlayStore
+          command: echo $API_KEY_PLAYSTORE | base64 --decode -i > $apiKeyPlayStore
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode -i > $releaseKeyStore
           
       - run:
           name: Create keystore.properties
