@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > api-key-playstore.json
+          command: echo $API_KEY_PLAYSTORE | base64 -d > api_key_playstore.json
       - run:
           name: Create release.keystore
           command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
