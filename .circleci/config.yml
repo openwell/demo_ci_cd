@@ -111,11 +111,11 @@ workflows:
             branches:
               ignore: /.*/
       - node:
-        filters:
-          tags:
-            only: /^v.*/
-          branches:
-            ignore: /.*/
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
       - android-alpha:
           requires:
             - node
