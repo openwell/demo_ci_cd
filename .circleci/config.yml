@@ -59,14 +59,6 @@ jobs:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
 
       - run:
-          name: echo key3
-          command: echo $API_KEY_PLAYSTORE
-
-      - run:
-          name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > $api_key_playstore
-
-      - run:
           name: Create release.keystore
           command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
           
@@ -105,14 +97,6 @@ jobs:
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
       
-      - run:
-          name: echo key
-          command: echo $API_KEY_PLAYSTORE
-
-      - run:
-          name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d > $api_key_playstore
-
       - run:
           name: Create release.keystore
           command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > $releaseKeyStore
