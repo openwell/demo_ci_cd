@@ -103,6 +103,10 @@ jobs:
       
       - run:
           name: Create api_key_playstore.json
+          command: echo $API_KEY_PLAYSTORE
+          
+      - run:
+          name: Create api_key_playstore.json
           command: echo $API_KEY_PLAYSTORE | base64 -d > api_key_playstore.json
 
       - run:
