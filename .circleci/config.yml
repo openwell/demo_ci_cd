@@ -168,36 +168,36 @@ workflows:
   version: 2
   # node-android-ios:
     node-android:
-    jobs:
-      - android-hold:
-          type: approval
+      jobs:
+        - android-hold:
+            type: approval
+            filters:
+              tags:
+                only: /^v.*/
+              branches:
+                ignore: /.*/
+        - node:
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
-      - node:
-        filters:
-          tags:
-            only: /^v.*/
-          branches:
-            ignore: /.*/
-      - android-alpha:
-          requires:
-            - node
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-      - android-beta:
-          requires:
-            - android-hold
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-      # - ios:
-      #     requires:
-      #       - node
+        - android-alpha:
+            requires:
+              - node
+            filters:
+              tags:
+                only: /^v.*/
+              branches:
+                ignore: /.*/
+        - android-beta:
+            requires:
+              - android-hold
+            filters:
+              tags:
+                only: /^v.*/
+              branches:
+                ignore: /.*/
+        # - ios:
+        #     requires:
+        #       - node
