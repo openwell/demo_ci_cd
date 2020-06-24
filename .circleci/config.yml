@@ -101,7 +101,7 @@ jobs:
 
 workflows:
   version: 2
-    node-android:
+    node-android-ios:
       jobs:
         - android-hold:
             type: approval
