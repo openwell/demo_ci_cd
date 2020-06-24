@@ -9,11 +9,11 @@ jobs:
 
       - run:
           name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 --decode > api_key_playstore.json
+          command: echo "$API_KEY_PLAYSTORE" | base64 --decode > api_key_playstore.json
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $releaseKeyStore
+          command: echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > $releaseKeyStore
 
       - run:
           name: Create keystore.properties
