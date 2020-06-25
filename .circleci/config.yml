@@ -64,7 +64,7 @@ jobs:
 
       - run:
           name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > app/release.keystore
           
       - run:
           name: Create gradle.properties
