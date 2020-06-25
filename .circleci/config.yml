@@ -13,18 +13,6 @@ jobs:
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
-      - run:
-          name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
-
-      - run:
-          name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
-          
-      - run:
-          name: Create gradle.properties
-          command: echo $KEYSTORE_PROPERTIES | base64 -d -i > gradle.properties
-
       - run: npm install
 
       - save_cache:
@@ -69,6 +57,18 @@ jobs:
 
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+
+      - run:
+          name: Create api_key_playstore.json
+          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
+
+      - run:
+          name: Create release.keystore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
+          
+      - run:
+          name: Create gradle.properties
+          command: echo $KEYSTORE_PROPERTIES | base64 -d -i > gradle.properties
 
       - run: gem update --system
 
