@@ -13,6 +13,18 @@ jobs:
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
+      - run:
+          name: Create api_key_playstore.json
+          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
+
+      - run:
+          name: Create release.keystore
+          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
+          
+      - run:
+          name: Create gradle.properties
+          command: echo $KEYSTORE_PROPERTIES | base64 -d -i > gradle.properties
+
       - run: npm install
 
       - save_cache:
@@ -58,19 +70,6 @@ jobs:
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
 
-      - run:
-          name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
-
-      - run:
-          name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
-            
-      - run:
-          name: Create keystore.properties
-          command: |
-            printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=0.33.1\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s\n' $android_useAndroidX $android_enableJetifier $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
-            echo keystore.properties
       - run: gem update --system
 
       - run: bundle install
@@ -102,19 +101,6 @@ jobs:
       - restore_cache:
           key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
       
-      - run:
-          name: Create api_key_playstore.json
-          command: echo $API_KEY_PLAYSTORE | base64 -d -i > $apiKeyPlayStore
-
-      - run:
-          name: Create release.keystore
-          command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d -i > $releaseKeyStore
-          
-      - run:
-          name: Create keystore.properties
-          command: |
-            printf 'android.useAndroidX=%s\nandroid.enableJetifier=%s\nFLIPPER_VERSION=0.33.1\nMYAPP_UPLOAD_STORE_FILE=%s\nMYAPP_UPLOAD_KEY_ALIAS=%s\nMYAPP_UPLOAD_STORE_PASSWORD=%s\nMYAPP_UPLOAD_KEY_PASSWORD=%s\n' $android_useAndroidX $android_enableJetifier $releaseKeyStore $MYAPP_UPLOAD_KEY_ALIAS $MYAPP_UPLOAD_STORE_PASSWORD $MYAPP_UPLOAD_KEY_PASSWORD > keystore.properties
-            echo keystore.properties
       - run: gem update --system
 
       - run: bundle install
